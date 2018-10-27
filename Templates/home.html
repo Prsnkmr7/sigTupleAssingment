@@ -1,0 +1,32 @@
+<div ng-controller="homeController">
+    <section class="full-width-grid">
+        <div class="account-table common-pad">
+            <h1>Hi {{userName}}</h1>
+            <div class="clearfix diamond-wrapper">
+                <div class="left">High Score: {{highScore}}</div>
+                <div class="right">Your Score: {{yourScore}}</div>
+            </div>
+            <div class="hint-message">You have <span class="bold-timer">{{ExchangeRateTimerDuration}}</span> Seconds</div>
+        </div>
+        <div class="content-wrapper">
+            <table class="account-table">
+                <tbody>
+                    <tr class="account-table__data-row grid-x common-pad" ng-repeat="list in listItems track by $index">
+                        <td class="account-table__date pointer show-emptyBox" ng-repeat="data in list.column track by $index"
+                        ng-class="{'show-green':data.active}" ng-click="boxIsClicked(data)"
+                        ></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <div class="white-overlay" ng-if="transactionTimeOut" >
+            <div class="white-overlay-back diamond-wrapper">
+                <p>Match is Over. </p>
+                <p>Total Points: {{highScore}}</p>
+                <div class="modal-footer">
+                        <button type="submit" class="btn" ng-click="resetValue()">Play Again</button>
+                    </div>
+            </div>
+        </div>
+</div>
